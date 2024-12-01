@@ -1,0 +1,23 @@
+
+Futuros Cambios:
+
+-pasar a SSTVD los pozos
+-añadir interpretacion de pozo
+-añadir pozo F11 a los topes de unidades
+-maximo 5 pozos o los que quepan en pantalla
+-corregir exageracion vertical - para despues
+-añadir indicador norte 3d - para despues
+-añadir curvas de nivel en 3d - para despues
+-ver si pueden hacerse mejoras de velocidad , con cache etc
+-Corregir Bill m3 para gas en histograma 
+-boton pulsado de topes de unidades
+-Implementar Flex para mejorar visualización
+
+Recomendaciones futuras
+-Hacer cada funcionalidad en una clase y/o archivo.py
+-Tomar rutas para los datos deacuerdo al proyecto , no rutas especificas
+-Hacer estilos de paginas que se vean bien en escritorio y movil, mejor usar porcentajes en html
+-Hacer estilos compartidos dss
+-poner variables path , de forma similar para entenderlas mejor
+-preferiblemente no usar variables globales
+-Buscar forma de hacer visualizacion 2d de superficies , muy dificil de implementar en plotly

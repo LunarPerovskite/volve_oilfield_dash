@@ -1,0 +1,14 @@
+# Petrel well tops
+# Lines starting with # are comments
+VERSION 2
+BEGIN HEADER
+MD
+TWT
+Type
+Surface name
+Well name
+Dip angle
+Dip azimuth
+Z
+END HEADER
+886 -999 HORIZON "Utsira Top" "Volve F_F-7_F-7_F-7_ACTUAL" -999 -999 882.5

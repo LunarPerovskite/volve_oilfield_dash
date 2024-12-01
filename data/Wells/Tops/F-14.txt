@@ -1,0 +1,17 @@
+# Petrel well tops
+# Lines starting with # are comments
+VERSION 2
+BEGIN HEADER
+MD
+TWT
+Type
+Surface name
+Well name
+Dip angle
+Dip azimuth
+Z
+END HEADER
+3000 -999 HORIZON "Hugin" "Volve F_F-14_F-14_F-14_ACTUAL" -999 -999 2842
+3208 -999 HORIZON "Sleipner" "Volve F_F-14_F-14_F-14_ACTUAL" -999 -999 2945
+3287 -999 HORIZON "Hugin" "Volve F_F-14_F-14_F-14_ACTUAL" -999 -999 2995
+3680 -999 HORIZON "Sleipner" "Volve F_F-14_F-14_F-14_ACTUAL" -999 -999 3130
