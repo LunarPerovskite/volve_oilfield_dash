@@ -1,4 +1,4 @@
-#GeoFieldvisor Beta release _ created by JEMR
+#GeoFieldvisor Beta release _ created by JEMR _ 1
 
 
 import os
@@ -245,6 +245,14 @@ shapefile = gpd.read_file(shp_path)
 # Convertir geometrías a GeoJSON
 geojson_data = shapefile.__geo_interface__
 
+import plotly.graph_objects as go
+
+import plotly.graph_objects as go
+
+# Función que genera el primer gráfico de pastel con tamaño relativo
+import plotly.graph_objects as go
+
+# Función que genera el primer gráfico de pastel con tamaño relativo
 def pie_chart_rec():
     # Datos para el gráfico de pastel
     labels = ['oil [mill Sm3]', 
@@ -286,6 +294,11 @@ def pie_chart_plc():
 
             },
         )
+
+
+
+
+
 
 def get_field_info_data():
     return [
@@ -349,7 +362,6 @@ tabs = html.Div([
     # Tabs para organizar la vista
     dcc.Tabs([
         
-        #Tab Generalidades del Campo - reservas , años produciendo , produccion anual , unidades informacion
         dcc.Tab(label='Field Info', children=[
             html.Div([
                 # Agregar el mapa interactivo
@@ -373,10 +385,10 @@ tabs = html.Div([
                 ],
                 style={
                     'color': 'black',
-                    "width": "400px",
+                    "width": "29%",
                     "display": "inline-block",
                     #"vertical-align": "top",
-                    "height": "300px",
+                    "height": "47%",
                     "backgroundColor": "#333333",
                     "borderRadius": "10px",
                     #"padding": "10px",
@@ -384,6 +396,8 @@ tabs = html.Div([
                     "position": "absolute",
                     "left": "5%", 
                     "top": "25%",
+                    'flexWrap': 'wrap',  # Permite que los elementos se muevan a la siguiente línea si es necesario  
+                    
                 },  
                 center=[58.4381, 1.8868],  # Centrar mapa
                 zoom=13,  # Nivel de zoom inicial
@@ -397,10 +411,10 @@ tabs = html.Div([
                         figure=pie_chart_rec(), # El gráfico de pastel interactivo
                         style={
                             'color': 'black',
-                            "width": "400px",
+                            "width": "29%",
                             "display": "inline-block",
                             #"vertical-align": "top",
-                            "height": "300px",
+                            "height": "47%",
                             "backgroundColor": "#333333",
                             "borderRadius": "10px",
                             #"padding": "10px",
@@ -424,10 +438,10 @@ tabs = html.Div([
                         figure=pie_chart_plc(),  # Llamamos a la función para obtener el segundo gráfico de pastel
                         style={
                             'color': 'black',
-                            "width": "400px",
+                            "width": "29%",
                             "display": "inline-block",
                             #"vertical-align": "top",
-                            "height": "300px",
+                            "height": "47%",
                             "backgroundColor": "#333333",
                             "borderRadius": "10px",
                             #"padding": "10px",
@@ -515,10 +529,10 @@ tabs = html.Div([
                         figure=generate_stacked_histogram(),  # Llamamos a la función para generar el histograma
                         style={
                             'color': 'black',
-                            "width": "400px",
+                            "width": "29%",
                             #"display": "inline-block",
                             #"vertical-align": "top",
-                            "height": "300px",
+                            "height": "47%",
                             "backgroundColor": "#333333",
                             "borderRadius": "10px",
                             #"padding": "10px",
@@ -538,7 +552,9 @@ tabs = html.Div([
                 
             ])
         ]),
-        
+
+
+
         # Tab 3D View
         dcc.Tab(label='3D View', children=[
             # Dropdown para seleccionar la superficie
@@ -668,7 +684,7 @@ tabs = html.Div([
                           'border': '1px solid #555555',  # Borde del gráfico
                       },
                       config={
-                          #'displayModeBar': False,  #quitar simbolos de plotly
+                          'displayModeBar': False,  #quitar simbolos de plotly
                           'showTips': False,
                           'displaylogo': False
                           
@@ -688,8 +704,23 @@ tabs = html.Div([
                 #"fontFamily": "Arial, sans-serif",  # Fuente del texto
                 "backgroundColor": "transparent",  # Sin fondo
                 "zIndex": "1000"      # Asegura que se muestre sobre otros elementos
-            }
-)
+                }
+            ),
+
+            html.Div(
+            "Faults can affect performance",
+            style={
+                "position": "fixed",  # Fijo en la pantalla, no cambia con el scroll
+                "bottom": "25px",     # Distancia desde la parte inferior
+                "left": "10px",       # Distancia desde la parte izquierda
+                "fontSize": "12px",   # Tamaño pequeño del texto
+                "color": "gray",     # Color del texto
+                #"fontFamily": "Arial, sans-serif",  # Fuente del texto
+                "backgroundColor": "transparent",  # Sin fondo
+                "zIndex": "1000"      # Asegura que se muestre sobre otros elementos
+                }
+            )
+
         ]),  # Fin del tab 3D View
 
 
@@ -856,49 +887,53 @@ tabs = html.Div([
         
 ],className="dbc")
 
-# Layout principal con las Tabs
 app.layout = dbc.Container(
     [
-        html.A(
-            html.Img(
-            src='data:image/png;base64,{}'.format(encoded_programlogo),
-            style={
-                'height': '4em',  # Hacer la imagen más grande
-                'width': 'auto',
-                'display': 'block',
-                'position': 'absolute',  # Asegura que la imagen no desplace el texto
-                'top': '1%',
-                'left': '30%',
-                }
-            ),
-            
+        
+        
+        
+        html.Div(
+            [
+                        # Título principal
+                html.H1(
+                    "Volve Oilfield Visor ",
+                    style={"textAlign": "center", 'position': 'relative', 'top': '0%'},  # Alineación del texto arriba
+                    className="text-center mb-2"
+                ),
+                html.A(
+                    html.Img(
+                        src='data:image/png;base64,{}'.format(encoded_logo),
+                        style={
+                            'height': '4em',  # Tamaño de la imagen
+                            'width': 'auto',
+                            'position': 'absolute',  # Imagen fija en su lugar
+                            'top': '0.2%',  # Posición vertical
+                            'left': '2%',  # Posición horizontal
+                            'zIndex': 10,  # Asegura que la imagen esté por encima de otros elementos
+                        }
+                    ),
+                    href="https://www.gearsmap.com",  # Enlace
+                    target="_blank",  # Abrir en nueva pestaña
+                    style={
+                        'textDecoration': 'none',  # Sin subrayado
+                    }
+                ),
+            ],
+            style={'position': 'relative'},  # Contenedor que no interfiere con el flujo
         ),
-        html.A(
-            html.Img(
-            src='data:image/png;base64,{}'.format(encoded_logo),
-            style={
-                'height': '4em',  # Hacer la imagen más grande
-                'width': 'auto',
-                'display': 'block',
-                'position': 'absolute',  # Asegura que la imagen no desplace el texto
-                'top': '0%',
-                'left': '2%',
-                }
-            ),
-            href="https://www.gearsmap.com",  # Enlace
-            target="_blank",  # Abrir en nueva pestaña
-            style={'height': '2em', 'width': '2em',"textDecoration": "none",'display': 'block','position': 'absolute'}  # Estilo para quitar el subrayado del enlace
+        
+        # Contenedor de los tabs
+        html.Div(
+            tabs,
+            style={'paddingTop': '-6em'},  # Espaciado suficiente para que los tabs no se tapen con la imagen
         ),
-        html.H1(
-            "Volve Oilfield Visor",
-            style={"textAlign": "center", 'position': 'relative', 'top': '0%'},  # Alineación del texto arriba
-            className="text-center mb-2"
-        ),
-        tabs,
     ],
     fluid=True,
     className="mt-2",
 )
+
+
+
 
 # Callback para actualizar el gráfico con la superficie seleccionada y la exageración vertical
 @app.callback(
@@ -1240,28 +1275,47 @@ def update_curve_options(selected_file):
 
     return curve_options, None
     
+
+
 @app.callback(
-    Output('log-graph-container', 'children'),  # Cambié a 'log-graph-container' aquí
-    Input('las-file-dropdown', 'value'),
-    Input('curve-dropdown', 'value'),
-    Input('toggle-lines-button', 'n_clicks')
+    [Output('log-graph-container', 'children'),  # Salida del contenedor de gráficos
+     Output('toggle-lines-button', 'style')],    # Estilo del botón (solo cambia el color)
+    [Input('las-file-dropdown', 'value'),        # Selección de archivo LAS
+     Input('curve-dropdown', 'value'),           # Selección de curva
+     Input('toggle-lines-button', 'n_clicks')],  # Pulsaciones del botón
+    prevent_initial_call=True
 )
-
-    
-
 def update_graphs(selected_file, selected_curves, n_clicks):
-    draw_lines = n_clicks is not None and n_clicks % 2 != 0
+    # Determinar si el botón está presionado
+    is_pressed = n_clicks is not None and n_clicks % 2 != 0
+
+    # Mantener el estilo original y solo cambiar el color de fondo
+    button_style = {
+        'color': 'white',
+                "width": "8%",
+                "display": "inline-block",
+                "vertical-align": "top",
+                "height": "60px",
+                'background-color': 'green' if is_pressed else 'gray',  # Solo cambia el fondo
+                "borderRadius": "10px",
+                "padding": "10px",
+                'border': '1px solid #555555',
+                "position": "absolute",
+                "left": "5%",  # Colocado a la izquierda del gráfico
+                "top": "55%",
+        
+    }
     
     # Manejo de casos en los que no hay archivo o curvas seleccionadas
     if not selected_file or not selected_curves:
-        return html.Div("")
+        return html.Div(""), button_style
 
     file_path = os.path.join(logs_folder, selected_file)
     data, available_columns = process_las_file(file_path)
     
     missing_columns = [col for col in selected_curves if col not in available_columns]
     if missing_columns:
-        return html.Div(f"Curvas faltantes: {', '.join(missing_columns)}")
+        return html.Div(f"Curvas faltantes: {', '.join(missing_columns)}"), button_style
     
     tops_file_path = os.path.join(tops_folder, f"{selected_file}.txt")
     if os.path.exists(tops_file_path):
@@ -1276,19 +1330,13 @@ def update_graphs(selected_file, selected_curves, n_clicks):
     # Filtrar topes dentro del rango del log
     filtered_tops = top_data[(top_data['MD'] >= log_min_depth) & (top_data['MD'] <= log_max_depth)]
 
-
     # Lista de colores para asignar a cada gráfico
     colors = ['blue', 'red', 'green', 'purple', 'orange', 'brown', 'pink', 'gray', 'yellow', 'cyan']
-    # Generar un gráfico para cada curva seleccionada
     plots = []
-
-   
 
     for i, curve in enumerate(selected_curves):
         # Procesar datos para la curva actual
         data, _ = process_las_file(file_path, columns_to_load=['DEPT', curve], sample_interval=samples_logs)
-
-        # Limpiar y suavizar los datos
         data_clean = remove_outliers(data, curve)
         data_smoothed = smooth_data(data_clean, curve)
 
@@ -1304,46 +1352,31 @@ def update_graphs(selected_file, selected_curves, n_clicks):
             )
         )
 
-        #Si el botón está activado, agregar líneas horizontales para los tops filtrados
-        if draw_lines and not filtered_tops.empty:
+        # Agregar líneas de topes si el botón está presionado
+        if is_pressed and not filtered_tops.empty:
             for _, row in filtered_tops.iterrows():
                 fig.add_hline(
-                    y=row['MD'],  # Profundidad del tope
+                    y=row['MD'],
                     line_dash="dash",
                     line_color="gray",
-                    annotation_text=row['Unit'],  # Nombre del tope
+                    annotation_text=row['Unit'],
                     annotation_position="top right"
                 )
-                
-
-
-
-
-
 
         # Configurar ejes
-        if i > 0:
-            leg=None
-        else:
-            leg="MD(m)"
-        fig.update_yaxes(autorange='reversed', title=leg)
-        fig.update_xaxes(title=curve,tickformat=".2f")
+        fig.update_yaxes(autorange='reversed', title="MD(m)" if i == 0 else None)
+        fig.update_xaxes(title=curve, tickformat=".2f")
         fig.update_layout(
-            height=500,  # Reducido el tamaño del gráfico
-            width=200,  # Reducido el tamaño del gráfico
+            height=500,
+            width=200,
             margin=dict(l=0, r=0, t=0, b=0)
-            
-                
         )
 
-        # Añadir el gráfico al contenedor
         plots.append(dcc.Graph(figure=fig, id=f"graph-{curve}", config={
-        #'displayModeBar': False,
-        'displaylogo': False ,# Oculta la barra de herramientas
-        #'showTips': False         # Desactiva los tips al pasar el cursor
-    }))
+            'displaylogo': False
+        }))
 
-    return html.Div(plots, style={'display': 'flex', 'flexDirection': 'row', 'margin-left': '20%'})  # Truncamos la lista a 5 elementos # Los gráficos se muestran en fila
+    return html.Div(plots, style={'display': 'flex', 'flexDirection': 'row', 'margin-left': '20%'}), button_style
     
 # Callback para alternar la visibilidad de la barra lateral
 @app.callback(
@@ -1418,5 +1451,5 @@ def update_state(close_clicks, open_clicks, is_open):
 
 # Ejecutar la app
 if __name__ == "__main__":
-    app.run_server() #debug=True
+    app.run_server(debug=True) #debug=True
     
